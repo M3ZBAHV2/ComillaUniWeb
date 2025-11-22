@@ -21,9 +21,6 @@ export default function Home() {
           <ViceChancellorQuote />
         </section>
         <AnnouncementsSection />
-        <section id="mission">
-          <MissionSection />
-        </section>
         <section id="academics">
           <MissionSection />
         </section>
@@ -31,16 +28,14 @@ export default function Home() {
           <NavigationCards />
         </section>
         <section id="research">
-          <NavigationCards />
+          <StatisticsSection />
         </section>
         <section id="student-life">
-          <NavigationCards />
+          <ResidentialSection />
         </section>
         <section id="news">
           <NewsSection />
         </section>
-        <StatisticsSection />
-        <ResidentialSection />
       </main>
       <section id="contact">
         <Footer />
