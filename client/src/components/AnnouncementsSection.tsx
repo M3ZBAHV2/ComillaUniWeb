@@ -3,21 +3,14 @@ import { Calendar, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useQuery } from "@tanstack/react-query";
-import type { Announcement } from "@shared/schema";
+import { announcementData } from "@/data/staticData";
 
 type AnnouncementType = "announcement" | "academic-date";
 
 export default function AnnouncementsSection() {
   const [activeTab, setActiveTab] = useState<AnnouncementType>("announcement");
 
-  const { data: announcements, isLoading } = useQuery<Announcement[]>({
-    queryKey: ["/api/announcements", activeTab],
-    queryFn: () => fetch(`/api/announcements?type=${activeTab}`).then(res => res.json()),
-  });
-
-  const items = announcements?.slice(0, 4) || [];
+  const items = announcementData.filter(a => a.type === activeTab).slice(0, 4);
 
   const formatDate = (date: Date) => {
     const d = new Date(date);
@@ -57,62 +50,45 @@ export default function AnnouncementsSection() {
         </div>
 
         {/* Announcements Grid */}
-        {isLoading ? (
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {[1, 2, 3, 4].map((i) => (
-              <Card key={i} className="p-6">
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {items.map((item) => {
+            const { day, month } = formatDate(item.date);
+            return (
+              <Card
+                key={item.id}
+                className="p-6 hover-elevate active-elevate-2 transition-all cursor-pointer"
+                data-testid={`card-announcement-${item.id}`}
+              >
                 <div className="flex gap-4">
-                  <Skeleton className="w-16 h-16 rounded-lg" />
-                  <div className="flex-1 space-y-2">
-                    <Skeleton className="h-4 w-20" />
-                    <Skeleton className="h-5 w-full" />
-                    <Skeleton className="h-5 w-3/4" />
+                  {/* Date Badge */}
+                  <div className="flex-shrink-0">
+                    <div className="w-16 h-16 rounded-lg bg-primary/10 flex flex-col items-center justify-center border border-primary/20">
+                      <div className="text-2xl font-bold text-primary">
+                        {day}
+                      </div>
+                      <div className="text-xs text-primary font-medium">
+                        {month}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-2 mb-2">
+                      <Calendar className="w-4 h-4 text-muted-foreground mt-1 flex-shrink-0" />
+                      <Badge variant="secondary" className="text-xs">
+                        {activeTab === "announcement" ? "Announcement" : "Academic Date"}
+                      </Badge>
+                    </div>
+                    <h3 className="text-base font-semibold text-foreground line-clamp-2" data-testid={`heading-announcement-title-${item.id}`}>
+                      {item.title}
+                    </h3>
                   </div>
                 </div>
               </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            {items.map((item) => {
-              const { day, month } = formatDate(item.date);
-              return (
-                <Card
-                  key={item.id}
-                  className="p-6 hover-elevate active-elevate-2 transition-all cursor-pointer"
-                  data-testid={`card-announcement-${item.id}`}
-                >
-                  <div className="flex gap-4">
-                    {/* Date Badge */}
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-lg bg-primary/10 flex flex-col items-center justify-center border border-primary/20">
-                        <div className="text-2xl font-bold text-primary">
-                          {day}
-                        </div>
-                        <div className="text-xs text-primary font-medium">
-                          {month}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start gap-2 mb-2">
-                        <Calendar className="w-4 h-4 text-muted-foreground mt-1 flex-shrink-0" />
-                        <Badge variant="secondary" className="text-xs">
-                          {activeTab === "announcement" ? "Announcement" : "Academic Date"}
-                        </Badge>
-                      </div>
-                      <h3 className="text-base font-semibold text-foreground line-clamp-2" data-testid={`heading-announcement-title-${item.id}`}>
-                        {item.title}
-                      </h3>
-                    </div>
-                  </div>
-                </Card>
-              );
-            })}
-          </div>
-        )}
+            );
+          })}
+        </div>
 
         {/* View All Button */}
         <div className="flex justify-center">

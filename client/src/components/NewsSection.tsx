@@ -2,30 +2,12 @@ import { Calendar, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { useQuery } from "@tanstack/react-query";
-import type { News } from "@shared/schema";
-import campusImage from "@assets/generated_images/university_building_exterior_walkway.png";
-import libraryImage from "@assets/generated_images/university_library_interior_students.png";
-import studentsImage from "@assets/generated_images/students_outdoor_campus_life.png";
-import labImage from "@assets/generated_images/science_laboratory_students_working.png";
-import researchImage from "@assets/generated_images/research_center_collaboration_scene.png";
-
-const imageMap: Record<string, string> = {
-  "university_building_exterior_walkway": campusImage,
-  "university_library_interior_students": libraryImage,
-  "students_outdoor_campus_life": studentsImage,
-  "science_laboratory_students_working": labImage,
-  "research_center_collaboration_scene": researchImage,
-};
+import { newsData, imageMap } from "@/data/staticData";
 
 export default function NewsSection() {
-  const { data: newsItems, isLoading } = useQuery<News[]>({
-    queryKey: ["/api/news"],
-  });
-
-  const featured = newsItems?.[0];
-  const otherNews = newsItems?.slice(1, 4) || [];
+  const newsItems = newsData;
+  const featured = newsItems[0];
+  const otherNews = newsItems.slice(1, 4) || [];
 
   const formatDate = (date: Date) => {
     return new Date(date).toLocaleDateString("en-US", {
@@ -55,28 +37,7 @@ export default function NewsSection() {
           </Button>
         </div>
 
-        {isLoading ? (
-          <div className="grid lg:grid-cols-3 gap-8">
-            <Card className="lg:col-span-2 overflow-hidden">
-              <Skeleton className="w-full h-96" />
-            </Card>
-            <div className="space-y-6">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="p-4">
-                  <div className="flex gap-4">
-                    <Skeleton className="w-24 h-24 rounded-md" />
-                    <div className="flex-1 space-y-2">
-                      <Skeleton className="h-4 w-20" />
-                      <Skeleton className="h-4 w-full" />
-                      <Skeleton className="h-4 w-3/4" />
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
             {/* Featured Article */}
             {featured && (
               <Card 
@@ -154,7 +115,6 @@ export default function NewsSection() {
               ))}
             </div>
           </div>
-        )}
       </div>
     </section>
   );

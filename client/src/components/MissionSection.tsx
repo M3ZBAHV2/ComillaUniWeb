@@ -1,13 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { Skeleton } from "@/components/ui/skeleton";
-import type { Department } from "@shared/schema";
+import { departmentData } from "@/data/staticData";
 import graduationImage from "@assets/generated_images/students_graduation_celebration_scene.png";
 import campusMapImage from "@assets/generated_images/campus_map_aerial_view.png";
 
 export default function MissionSection() {
-  const { data: departments, isLoading } = useQuery<Department[]>({
-    queryKey: ["/api/departments"],
-  });
+  const departments = departmentData;
 
   return (
     <section className="py-20 md:py-24 bg-primary/5" data-testid="section-mission">
@@ -54,27 +50,19 @@ export default function MissionSection() {
         {/* Departments Info */}
         <div className="mt-16 p-8 bg-card rounded-lg border border-card-border">
           <h3 className="text-2xl font-bold text-foreground mb-6 text-center" data-testid="heading-departments">
-            Our {departments?.length || 19} Academic Departments
+            Our {departments.length} Academic Departments
           </h3>
-          {isLoading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[...Array(19)].map((_, i) => (
-                <Skeleton key={i} className="h-14 rounded-md" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {departments?.map((dept) => (
-                <div
-                  key={dept.id}
-                  className="text-center p-3 bg-background rounded-md border border-border hover-elevate transition-all"
-                  data-testid={`text-department-${dept.name.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  <span className="text-sm font-medium text-foreground">{dept.name}</span>
-                </div>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {departments.map((dept) => (
+              <div
+                key={dept.id}
+                className="text-center p-3 bg-background rounded-md border border-border hover-elevate transition-all"
+                data-testid={`text-department-${dept.name.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                <span className="text-sm font-medium text-foreground">{dept.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
