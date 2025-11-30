@@ -1,5 +1,5 @@
 import { departmentData } from "@/data/staticData";
-import graduationImage from "@assets/generated_images/students_graduation_celebration_scene.png";
+import graduationImage from "@assets/image_1764536477662.png";
 import campusMapImage from "@assets/generated_images/campus_map_aerial_view.png";
 
 export default function MissionSection() {
@@ -10,11 +10,11 @@ export default function MissionSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left Image */}
-          <div className="rounded-lg overflow-hidden shadow-lg">
+          <div className="rounded-lg overflow-hidden shadow-lg bg-white">
             <img
               src={graduationImage}
               alt="Students celebrating graduation"
-              className="w-full h-80 object-cover"
+              className="w-full h-96 object-contain"
               data-testid="img-graduation"
             />
           </div>
