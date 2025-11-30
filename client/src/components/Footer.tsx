@@ -159,21 +159,13 @@ export default function Footer() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Button
             size="lg"
             className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-lg"
             data-testid="button-request-info"
           >
             Request for Information
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-lg"
-            data-testid="button-apply-now"
-          >
-            Apply Now
           </Button>
         </div>
       </div>
