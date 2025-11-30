@@ -7,7 +7,7 @@ import logoPath from "@assets/image-removebg-preview_1764509305284.png";
 const menuItems = [
   { name: "Home", path: "#hero" },
   { name: "About", path: "#about", hasDropdown: true },
-  { name: "Academics", path: "#academics" },
+  { name: "Academics", path: "#academics", hasDropdown: true },
   { name: "Admissions", path: "#admissions" },
   { name: "Research", path: "#research" },
   { name: "Student Life", path: "#student-life" },
@@ -44,10 +44,42 @@ const aboutDropdownItems = [
   }
 ];
 
+const academicsDropdownItems = [
+  {
+    category: "Academic",
+    items: [
+      { name: "Academic Programs", path: "#academic-programs" },
+      { name: "Academic Calendar", path: "#academic-calendar" },
+      { name: "Academic Curriculum", path: "#academic-curriculum" },
+      { name: "Admission", path: "#admission" },
+      { name: "Central Library", path: "#central-library" },
+    ]
+  },
+  {
+    category: "Academic Bodies",
+    items: [
+      { name: "Faculties", path: "#faculties" },
+      { name: "Departments", path: "#departments" },
+    ]
+  },
+  {
+    category: "Admission",
+    items: [
+      { name: "Undergraduate Programs", path: "#undergraduate-programs" },
+      { name: "Graduate Programs", path: "#graduate-programs" },
+      { name: "PhD Programs", path: "#phd-programs" },
+      { name: "EMBA", path: "#emba" },
+      { name: "EMCS", path: "#emcs" },
+      { name: "EMA", path: "#ema" },
+      { name: "EMICT", path: "#emict" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isAboutHovered, setIsAboutHovered] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -89,12 +121,15 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-1">
               {menuItems.map((item) => {
                 if (item.hasDropdown) {
+                  const isOpen = openDropdown === item.name;
+                  const dropdownItems = item.name === "About" ? aboutDropdownItems : academicsDropdownItems;
+                  
                   return (
                     <div 
                       key={item.name}
                       className="relative"
-                      onMouseEnter={() => setIsAboutHovered(true)}
-                      onMouseLeave={() => setIsAboutHovered(false)}
+                      onMouseEnter={() => setOpenDropdown(item.name)}
+                      onMouseLeave={() => setOpenDropdown(null)}
                     >
                       <Button
                         variant="ghost"
@@ -102,19 +137,19 @@ export default function Navbar() {
                         className="flex items-center gap-1"
                       >
                         {item.name}
-                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isAboutHovered ? 'rotate-180' : ''}`} />
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
                       </Button>
                       
                       {/* Dropdown Menu */}
                       <div
                         className={`absolute top-full left-0 mt-2 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
-                          isAboutHovered 
+                          isOpen 
                             ? 'opacity-100 visible scale-y-100 translate-y-0' 
                             : 'opacity-0 invisible scale-y-95 -translate-y-2'
                         }`}
                       >
                         <div className="grid grid-cols-3 divide-x divide-border p-6">
-                          {aboutDropdownItems.map((column, idx) => (
+                          {dropdownItems.map((column, idx) => (
                             <div key={idx} className="px-6 min-w-max">
                               <h3 className="font-semibold text-sm text-foreground mb-4">{column.category}</h3>
                               <div className="flex flex-col gap-3">
