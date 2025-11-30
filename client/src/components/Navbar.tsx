@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 import logoPath from "@assets/image-removebg-preview_1764509305284.png";
 
 const menuItems = [
   { name: "Home", path: "#hero" },
-  { name: "About", path: "#about" },
+  { name: "About", path: "#about", hasDropdown: true },
   { name: "Academics", path: "#academics" },
   { name: "Admissions", path: "#admissions" },
   { name: "Research", path: "#research" },
@@ -15,9 +15,39 @@ const menuItems = [
   { name: "Contact", path: "#contact" },
 ];
 
+const aboutDropdownItems = [
+  {
+    category: "About University",
+    items: [
+      { name: "University at a Glance", path: "#university-glance" },
+      { name: "Vision & Mission", path: "#vision-mission" },
+      { name: "List of Vice Chancellors", path: "#vice-chancellors" },
+    ]
+  },
+  {
+    category: "University Leadership",
+    items: [
+      { name: "Vice Chancellor", path: "#vice-chancellor" },
+      { name: "Pro-Vice Chancellor", path: "#pro-vice-chancellor" },
+      { name: "Treasurer", path: "#treasurer" },
+    ]
+  },
+  {
+    category: "Governance Framework",
+    items: [
+      { name: "University Ordinance", path: "#ordinance" },
+      { name: "Syndicate Members", path: "#syndicate" },
+      { name: "Academic Council", path: "#academic-council" },
+      { name: "University Statues", path: "#statues" },
+      { name: "W&C abuse prevention committee", path: "#prevention-committee" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAboutHovered, setIsAboutHovered] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -57,20 +87,71 @@ export default function Navbar() {
 
             {/* Desktop Menu */}
             <div className="hidden lg:flex items-center gap-1">
-              {menuItems.map((item) => (
-                <a 
-                  key={item.name} 
-                  href={item.path} 
-                  data-testid={`link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="no-underline"
-                >
-                  <Button
-                    variant="ghost"
+              {menuItems.map((item) => {
+                if (item.hasDropdown) {
+                  return (
+                    <div 
+                      key={item.name}
+                      className="relative"
+                      onMouseEnter={() => setIsAboutHovered(true)}
+                      onMouseLeave={() => setIsAboutHovered(false)}
+                    >
+                      <Button
+                        variant="ghost"
+                        data-testid={`link-${item.name.toLowerCase()}`}
+                        className="flex items-center gap-1"
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isAboutHovered ? 'rotate-180' : ''}`} />
+                      </Button>
+                      
+                      {/* Dropdown Menu */}
+                      <div
+                        className={`absolute top-full left-0 mt-0 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
+                          isAboutHovered 
+                            ? 'opacity-100 visible scale-y-100 translate-y-0' 
+                            : 'opacity-0 invisible scale-y-95 -translate-y-2'
+                        }`}
+                      >
+                        <div className="grid grid-cols-3 divide-x divide-border">
+                          {aboutDropdownItems.map((column, idx) => (
+                            <div key={idx} className="p-4 min-w-max">
+                              <h3 className="font-semibold text-sm text-foreground mb-3">{column.category}</h3>
+                              <div className="flex flex-col gap-2">
+                                {column.items.map((subitem) => (
+                                  <a
+                                    key={subitem.name}
+                                    href={subitem.path}
+                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 no-underline"
+                                    data-testid={`link-${subitem.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                  >
+                                    {subitem.name}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+                
+                return (
+                  <a 
+                    key={item.name} 
+                    href={item.path} 
+                    data-testid={`link-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="no-underline"
                   >
-                    {item.name}
-                  </Button>
-                </a>
-              ))}
+                    <Button
+                      variant="ghost"
+                    >
+                      {item.name}
+                    </Button>
+                  </a>
+                );
+              })}
             </div>
 
             {/* Right Side - Search and Mobile Menu */}
