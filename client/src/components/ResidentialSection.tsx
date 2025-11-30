@@ -1,6 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import residentialImage from "@assets/generated_images/residential_hall_dormitory_building.png";
+import residentialImage from "@assets/image_1764517038859.png";
 
 export default function ResidentialSection() {
   return (
@@ -9,8 +9,8 @@ export default function ResidentialSection() {
       <div className="absolute inset-0">
         <img
           src={residentialImage}
-          alt="Residential halls"
-          className="w-full h-full object-cover"
+          alt="Comilla University Campus"
+          className="w-full h-full object-cover object-center"
           data-testid="img-residential"
         />
         {/* Gradient Overlay */}
