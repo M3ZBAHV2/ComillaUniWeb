@@ -27,8 +27,11 @@ export default function MissionSection() {
             <p className="text-lg text-foreground leading-relaxed">
               Comilla University is committed to providing world-class education and fostering
               innovation through cutting-edge research. Located at Lalmai Bihar, Moynamoti,
-              Kotbari, Cumilla on 50 acres of land, we serve over 20,000 students across{" "}
-              <span className="font-semibold text-primary">19 departments</span>.
+              Kotbari, Cumilla on 50 acres of land, we serve{" "}
+              <span className="font-semibold text-primary">6,461 students</span> with{" "}
+              <span className="font-semibold text-primary">281 faculty members</span> across{" "}
+              <span className="font-semibold text-primary">6 faculties</span>, supported by{" "}
+              <span className="font-semibold text-primary">307 non-academic staffs</span>.
             </p>
             <p className="text-base text-muted-foreground">
               Our mission is to prepare students for the challenges of tomorrow while maintaining
