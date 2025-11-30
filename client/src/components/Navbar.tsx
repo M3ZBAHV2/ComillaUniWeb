@@ -9,7 +9,7 @@ const menuItems = [
   { name: "About", path: "#about", hasDropdown: true },
   { name: "Academics", path: "#academics", hasDropdown: true },
   { name: "Administrations", path: "#administrations", hasDropdown: true },
-  { name: "Research", path: "#research" },
+  { name: "Research", path: "#research", hasDropdown: true },
   { name: "Student Life", path: "#student-life" },
   { name: "News", path: "#news" },
   { name: "Contact", path: "#contact" },
@@ -103,6 +103,17 @@ const administrationsDropdownItems = [
   }
 ];
 
+const researchDropdownItems = [
+  {
+    category: "Research",
+    items: [
+      { name: "Ongoing Research", path: "#ongoing-research" },
+      { name: "Completed Research", path: "#completed-research" },
+      { name: "Funded Research", path: "#funded-research" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -154,8 +165,10 @@ export default function Navbar() {
                     dropdownItems = aboutDropdownItems;
                   } else if (item.name === "Academics") {
                     dropdownItems = academicsDropdownItems;
-                  } else {
+                  } else if (item.name === "Administrations") {
                     dropdownItems = administrationsDropdownItems;
+                  } else {
+                    dropdownItems = researchDropdownItems;
                   }
                   
                   return (
@@ -182,9 +195,9 @@ export default function Navbar() {
                             : 'opacity-0 invisible scale-y-95 -translate-y-2'
                         }`}
                       >
-                        <div className="grid grid-cols-3 divide-x divide-border p-6">
+                        <div className={`${dropdownItems.length === 1 ? 'grid grid-cols-1' : 'grid grid-cols-3 divide-x'} divide-border p-6`}>
                           {dropdownItems.map((column, idx) => (
-                            <div key={idx} className="px-6 min-w-max">
+                            <div key={idx} className={`${dropdownItems.length > 1 ? 'px-6' : ''} min-w-max`}>
                               <h3 className="font-semibold text-sm text-foreground mb-4">{column.category}</h3>
                               <div className="flex flex-col gap-3">
                                 {column.items.map((subitem) => (
