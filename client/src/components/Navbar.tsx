@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
+import logoPath from "@assets/image-removebg-preview_1764509305284.png";
 
 const menuItems = [
   { name: "Home", path: "#hero" },
@@ -42,9 +43,11 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" data-testid="link-home">
               <div className="flex items-center gap-3 hover-elevate rounded-md px-3 py-2 -ml-3 transition-all cursor-pointer">
-                <div className="w-12 h-12 bg-primary rounded-md flex items-center justify-center">
-                  <span className="text-primary-foreground font-bold text-xl">CU</span>
-                </div>
+                <img 
+                  src={logoPath} 
+                  alt="Cumilla University Logo"
+                  className="w-12 h-12 object-contain"
+                />
                 <div className="hidden md:block">
                   <div className="font-bold text-lg text-foreground">Comilla University</div>
                   <div className="text-xs text-muted-foreground">Excellence in Education</div>
