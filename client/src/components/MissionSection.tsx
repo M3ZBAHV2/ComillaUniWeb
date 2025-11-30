@@ -1,7 +1,6 @@
 import { departmentData } from "@/data/staticData";
-import graduationImage from "@assets/image_1764536477662.png";
+import graduationImage from "@assets/generated_images/students_graduation_celebration_scene.png";
 import campusMapImage from "@assets/generated_images/campus_map_aerial_view.png";
-import campusBackgroundImage from "@assets/generated_images/university_campus_background_blur.png";
 
 export default function MissionSection() {
   const departments = departmentData;
@@ -11,18 +10,11 @@ export default function MissionSection() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Left Image */}
-          <div
-            className="rounded-lg overflow-hidden shadow-lg bg-white flex items-center justify-center h-96"
-            style={{
-              backgroundImage: `url(${campusBackgroundImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          >
+          <div className="rounded-lg overflow-hidden shadow-lg">
             <img
               src={graduationImage}
               alt="Students celebrating graduation"
-              className="w-full h-full object-contain"
+              className="w-full h-80 object-cover"
               data-testid="img-graduation"
             />
           </div>
