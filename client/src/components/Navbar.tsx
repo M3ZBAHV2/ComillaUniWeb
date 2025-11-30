@@ -10,7 +10,7 @@ const menuItems = [
   { name: "Academics", path: "#academics", hasDropdown: true },
   { name: "Administrations", path: "#administrations", hasDropdown: true },
   { name: "Research", path: "#research", hasDropdown: true },
-  { name: "Student Life", path: "#student-life" },
+  { name: "Students", path: "#students", hasDropdown: true },
   { name: "News", path: "#news" },
   { name: "Contact", path: "#contact" },
 ];
@@ -114,6 +114,35 @@ const researchDropdownItems = [
   }
 ];
 
+const studentsDropdownItems = [
+  {
+    category: "Student Facilities",
+    items: [
+      { name: "Scholarships & Financial Aids", path: "#scholarships-financial-aids" },
+      { name: "Halls of Residence", path: "#halls-of-residence" },
+      { name: "Transport Facilities", path: "#transport-facilities" },
+      { name: "Health Insurance", path: "#health-insurance" },
+      { name: "Online Payment System", path: "#online-payment-system" },
+    ]
+  },
+  {
+    category: "Online Services",
+    items: [
+      { name: "Apply for Certificate/Marksheet", path: "#apply-certificate-marksheet" },
+      { name: "Apply for Govt Scholarships", path: "#apply-govt-scholarships" },
+      { name: "Examination Results", path: "#examination-results" },
+      { name: "Apply for Transcript", path: "#apply-transcript" },
+      { name: "Exam Form Fill-up", path: "#exam-form-fillup" },
+    ]
+  },
+  {
+    category: "Alumni",
+    items: [
+      { name: "Alumni Association", path: "#alumni-association" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -167,8 +196,10 @@ export default function Navbar() {
                     dropdownItems = academicsDropdownItems;
                   } else if (item.name === "Administrations") {
                     dropdownItems = administrationsDropdownItems;
-                  } else {
+                  } else if (item.name === "Research") {
                     dropdownItems = researchDropdownItems;
+                  } else {
+                    dropdownItems = studentsDropdownItems;
                   }
                   
                   return (
