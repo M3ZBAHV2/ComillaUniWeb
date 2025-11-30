@@ -18,8 +18,7 @@ export default function NewsSection() {
   };
 
   const getImage = (imageName: string) => {
-    const images = Object.values(imageMap);
-    return imageMap[imageName] || images[0];
+    return imageMap[imageName] || campusImage;
   };
 
   return (
