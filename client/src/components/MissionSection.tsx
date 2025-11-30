@@ -1,5 +1,5 @@
 import { departmentData } from "@/data/staticData";
-import graduationImage from "@assets/generated_images/students_graduation_celebration_scene.png";
+import graduationImage from "@assets/Gemini_Generated_Image_x42hcdx42hcdx42h_1764537052267.png";
 import campusMapImage from "@assets/generated_images/campus_map_aerial_view.png";
 
 export default function MissionSection() {
