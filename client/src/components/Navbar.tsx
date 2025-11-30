@@ -107,17 +107,17 @@ export default function Navbar() {
                       
                       {/* Dropdown Menu */}
                       <div
-                        className={`absolute top-full left-0 mt-0 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
+                        className={`absolute top-full left-0 mt-2 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
                           isAboutHovered 
                             ? 'opacity-100 visible scale-y-100 translate-y-0' 
                             : 'opacity-0 invisible scale-y-95 -translate-y-2'
                         }`}
                       >
-                        <div className="grid grid-cols-3 divide-x divide-border">
+                        <div className="grid grid-cols-3 divide-x divide-border p-6">
                           {aboutDropdownItems.map((column, idx) => (
-                            <div key={idx} className="p-4 min-w-max">
-                              <h3 className="font-semibold text-sm text-foreground mb-3">{column.category}</h3>
-                              <div className="flex flex-col gap-2">
+                            <div key={idx} className="px-6 min-w-max">
+                              <h3 className="font-semibold text-sm text-foreground mb-4">{column.category}</h3>
+                              <div className="flex flex-col gap-3">
                                 {column.items.map((subitem) => (
                                   <a
                                     key={subitem.name}
