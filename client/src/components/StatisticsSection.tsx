@@ -1,26 +1,33 @@
-import { Users, GraduationCap, BookOpen } from "lucide-react";
+import { Users, GraduationCap, Building2, Briefcase } from "lucide-react";
 
 const statistics = [
   {
     id: "students",
     icon: Users,
-    number: "20,000+",
+    number: "6,461",
     label: "Students",
     description: "Enrolled across all programs",
   },
   {
-    id: "graduates",
+    id: "faculty-members",
     icon: GraduationCap,
-    number: "22,000+",
-    label: "Graduates",
-    description: "Success stories and counting",
+    number: "281",
+    label: "Faculty Members",
+    description: "Dedicated educators",
   },
   {
-    id: "subjects",
-    icon: BookOpen,
-    number: "27",
-    label: "High Categories of Subjects",
-    description: "Diverse academic offerings",
+    id: "faculties",
+    icon: Building2,
+    number: "6",
+    label: "Faculties",
+    description: "Academic divisions",
+  },
+  {
+    id: "non-academic-staff",
+    icon: Briefcase,
+    number: "307",
+    label: "Non Academic Staffs",
+    description: "Supporting excellence",
   },
 ];
 
@@ -28,7 +35,10 @@ export default function StatisticsSection() {
   return (
     <section className="py-20 md:py-24 bg-background" data-testid="section-statistics">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-16" data-testid="heading-statistics">
+          Numbers at a Glance
+        </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {statistics.map((stat) => {
             const Icon = stat.icon;
             return (
