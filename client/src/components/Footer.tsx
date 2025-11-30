@@ -50,18 +50,18 @@ export default function Footer() {
               <div className="flex gap-3">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1" />
                 <div>
-                  <p className="text-sm">212/2 Dargah Gate</p>
-                  <p className="text-sm">Comilla-3500</p>
+                  <p className="text-sm font-semibold">Comilla University</p>
+                  <p className="text-sm">Cumilla-3506</p>
                   <p className="text-sm">Bangladesh</p>
                 </div>
               </div>
               <div className="flex gap-3">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <p className="text-sm">+880-123-456-7890</p>
+                <p className="text-sm">02334411101</p>
               </div>
               <div className="flex gap-3">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <p className="text-sm">info@cu.ac.bd</p>
+                <p className="text-sm">info@cou.ac.bd</p>
               </div>
             </div>
 
