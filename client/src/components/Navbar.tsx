@@ -11,7 +11,7 @@ const menuItems = [
   { name: "Administrations", path: "#administrations", hasDropdown: true },
   { name: "Research", path: "#research", hasDropdown: true },
   { name: "Students", path: "#students", hasDropdown: true },
-  { name: "News", path: "#news" },
+  { name: "News", path: "#news", hasDropdown: true },
   { name: "Contact", path: "#contact" },
 ];
 
@@ -143,6 +143,18 @@ const studentsDropdownItems = [
   }
 ];
 
+const newsDropdownItems = [
+  {
+    category: "News",
+    items: [
+      { name: "Teaching & Learning", path: "#teaching-learning" },
+      { name: "Research", path: "#news-research" },
+      { name: "Community Engagement", path: "#community-engagement" },
+      { name: "Innovation & Sustainability", path: "#innovation-sustainability" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -198,8 +210,10 @@ export default function Navbar() {
                     dropdownItems = administrationsDropdownItems;
                   } else if (item.name === "Research") {
                     dropdownItems = researchDropdownItems;
-                  } else {
+                  } else if (item.name === "Students") {
                     dropdownItems = studentsDropdownItems;
+                  } else {
+                    dropdownItems = newsDropdownItems;
                   }
                   
                   return (
