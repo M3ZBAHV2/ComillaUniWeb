@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/generated_images/university_campus_aerial_hero.png";
+import heroImage from "@assets/image_1764516008840.png";
 
 const heroSlides = [
   {
