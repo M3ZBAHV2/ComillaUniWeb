@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@assets/image_1764516008840.png";
+import heroImage1 from "@assets/image_1764516008840.png";
+import heroImage2 from "@assets/image_1764516123892.png";
+import heroImage3 from "@assets/image_1764516175146.png";
 
 const heroSlides = [
   {
-    image: heroImage,
+    image: heroImage1,
     title: "Innovative and Sustainable New Campus",
     subtitle: "Building the Future of Education in Bangladesh",
   },
   {
-    image: heroImage,
+    image: heroImage2,
     title: "Excellence in Academic Achievement",
     subtitle: "20,000+ Students Pursuing Their Dreams",
   },
   {
-    image: heroImage,
+    image: heroImage3,
     title: "Research and Innovation Hub",
     subtitle: "Leading the Way in Scientific Discovery",
   },
