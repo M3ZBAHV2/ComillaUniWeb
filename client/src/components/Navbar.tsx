@@ -220,7 +220,7 @@ export default function Navbar() {
                       
                       {/* Dropdown Menu */}
                       <div
-                        className={`absolute top-full left-0 mt-2 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
+                        className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-max bg-background border border-border rounded-md shadow-lg overflow-hidden transition-all duration-300 origin-top z-40 ${
                           isOpen 
                             ? 'opacity-100 visible scale-y-100 translate-y-0' 
                             : 'opacity-0 invisible scale-y-95 -translate-y-2'
