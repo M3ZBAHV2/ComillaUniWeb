@@ -8,7 +8,7 @@ const menuItems = [
   { name: "Home", path: "#hero" },
   { name: "About", path: "#about", hasDropdown: true },
   { name: "Academics", path: "#academics", hasDropdown: true },
-  { name: "Admissions", path: "#admissions" },
+  { name: "Administrations", path: "#administrations", hasDropdown: true },
   { name: "Research", path: "#research" },
   { name: "Student Life", path: "#student-life" },
   { name: "News", path: "#news" },
@@ -76,6 +76,33 @@ const academicsDropdownItems = [
   }
 ];
 
+const administrationsDropdownItems = [
+  {
+    category: "Academic Heads",
+    items: []
+  },
+  {
+    category: "Member Profile",
+    items: [
+      { name: "Faculty Member Profile", path: "#faculty-member-profile" },
+      { name: "Officer Profile", path: "#officer-profile" },
+    ]
+  },
+  {
+    category: "Others",
+    items: [
+      { name: "VC office", path: "#vc-office" },
+      { name: "Pro VC Office", path: "#pro-vc-office" },
+      { name: "Treasurer Office", path: "#treasurer-office" },
+      { name: "Proctor Office", path: "#proctor-office" },
+      { name: "Research & Extension Office", path: "#research-extension-office" },
+      { name: "IQAC", path: "#iqac" },
+      { name: "Student Counselling", path: "#student-counselling" },
+      { name: "All Offices", path: "#all-offices" },
+    ]
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -122,7 +149,14 @@ export default function Navbar() {
               {menuItems.map((item) => {
                 if (item.hasDropdown) {
                   const isOpen = openDropdown === item.name;
-                  const dropdownItems = item.name === "About" ? aboutDropdownItems : academicsDropdownItems;
+                  let dropdownItems;
+                  if (item.name === "About") {
+                    dropdownItems = aboutDropdownItems;
+                  } else if (item.name === "Academics") {
+                    dropdownItems = academicsDropdownItems;
+                  } else {
+                    dropdownItems = administrationsDropdownItems;
+                  }
                   
                   return (
                     <div 
