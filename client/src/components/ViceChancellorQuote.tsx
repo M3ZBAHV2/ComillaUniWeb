@@ -1,6 +1,6 @@
 import { Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import vcImage from "@assets/generated_images/vice_chancellor_portrait_photo.png";
+import vcImage from "@assets/image_1764516450826.png";
 
 export default function ViceChancellorQuote() {
   return (
@@ -34,15 +34,16 @@ export default function ViceChancellorQuote() {
           </div>
 
           {/* Photo */}
-          <div className="relative">
-            <div className="relative rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative flex justify-center md:justify-end">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl max-w-sm md:max-w-md">
               <img
                 src={vcImage}
                 alt="Professor Dr. Md. Haider Ali - Vice Chancellor"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover aspect-[3/4] image-rendering-auto"
+                style={{ imageRendering: 'auto' }}
                 data-testid="img-vice-chancellor"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent" />
             </div>
           </div>
         </div>
