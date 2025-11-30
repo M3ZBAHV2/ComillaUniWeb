@@ -49,6 +49,18 @@ const navigationItems = [
     subtitle: "Funding Your Education",
     image: libraryImage,
   },
+  {
+    id: "library",
+    title: "Library",
+    subtitle: "Knowledge Resources & Archives",
+    image: libraryImage,
+  },
+  {
+    id: "alumni",
+    title: "Alumni",
+    subtitle: "Connect with Our Graduates",
+    image: studentLifeImage,
+  },
 ];
 
 export default function NavigationCards() {
