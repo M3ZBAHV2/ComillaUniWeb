@@ -142,4 +142,5 @@ export const departmentData: Department[] = [
   { id: "17", name: "Geography", description: "Physical & Human Geography" },
   { id: "18", name: "Journalism", description: "Mass Communication & Media" },
   { id: "19", name: "Fine Arts", description: "Visual & Performing Arts" },
+  { id: "20", name: "Pharmacy", description: "Pharmaceutical Sciences" },
 ];
