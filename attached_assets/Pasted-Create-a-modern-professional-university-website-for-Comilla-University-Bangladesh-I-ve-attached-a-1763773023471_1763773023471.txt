@@ -1,0 +1,96 @@
+Create a modern, professional university website for Comilla University, Bangladesh. I've attached a reference image (image.jpg) that shows the exact design style, layout, and components I want to replicate.
+
+PROJECT OVERVIEW:
+Build a full-stack, responsive university website with the following core sections: Home, About, Academics, Admissions, Research, Student Life, News, and Contact.
+
+TECHNICAL REQUIREMENTS:
+- Use React.js for the frontend with modern hooks
+- Implement responsive design (mobile-first approach)
+- Use Tailwind CSS for styling to match the blue gradient theme in the reference image
+- Create a smooth scrolling single-page application with section navigation
+- Include routing for multi-page functionality
+- Set up a basic backend with Node.js/Express for dynamic content
+- Use a database (Replit DB or similar) to store news articles and announcements
+
+HOMEPAGE SECTIONS (Based on Reference Image):
+
+1. HERO SECTION:
+   - Full-width banner with overlay text: "Innovative and Sustainable New Campus"
+   - Background: High-quality campus image with gradient overlay
+   - Call-to-action button: "Learn More"
+   - Navigation bar: sticky header with university logo, main menu items, and search icon
+
+2. QUOTE SECTION:
+   - Navy blue background with white text
+   - Quote from Vice Chancellor Professor Dr. Md. Haider Ali about preparing students for the future
+   - Include photo of Vice Chancellor on the right side
+   - "Read More" button below the quote
+
+3. ANNOUNCEMENTS SECTION:
+   - Two filter buttons: "Announcements" and "Academic Dates"
+   - Display 4 recent announcements in a card layout with date badges (e.g., "18 Apr", "07 Nov")
+   - Each announcement should show date and brief title
+   - Include "View All" button
+
+4. MISSION SECTION:
+   - Two-column layout with images and text
+   - Left: Student celebration image with mortarboards
+   - Right: Map or campus activity image
+   - Center: Mission statement text with blue heading
+   - Include information about Comilla University's location at Kotbari, Cumilla, with 19 departments
+
+5. NAVIGATION CARDS:
+   - Grid layout with these sections: "Find Your Way", "Schools and Departments", "Institutes", "Admissions", "Research", "Student Life", "Scholarship and Financial Aid"
+   - Each card should have white text on semi-transparent overlay over campus images
+   - Include relevant call-to-action buttons
+
+6. NEWS SECTION:
+   - "News" heading with "All News" button
+   - Featured news article on the left with large image
+   - Three smaller news items on the right with date badges
+   - Sample news: mental health campaigns, wellness center updates, student achievements
+
+7. STATISTICS SECTION:
+   - White background
+   - Display three key metrics: "20,000+ Students", "22,000+ Graduates", "27 High Categories of Subjects"
+   - Use large numbers with descriptive text below
+
+8. RESIDENTIAL SEMESTER SECTION:
+   - Full-width section with campus building image
+   - Overlay text about residential semester program
+   - "Read More" button
+
+9. FOOTER:
+   - Multi-column layout with:
+     * Contact information (Address: 212/2 Dargah Gate, Comilla-3500, Phone, Email)
+     * Quick links: About, Academics, Resources, Apply sections
+     * Social media icons (Facebook, Twitter, YouTube, LinkedIn, Flickr)
+     * Copyright notice
+   - Include embedded Google Map for university location
+
+DESIGN SPECIFICATIONS (Match Reference Image):
+- Primary color: Navy blue (#1e3a5f or similar)
+- Secondary color: Light blue for accents
+- Use white and light gray for contrast sections
+- Implement smooth gradient overlays (blue to transparent)
+- Font: Clean sans-serif (Inter, Popporo, or Roboto)
+- Border radius: Rounded corners for buttons and cards (8-12px)
+- Spacing: Generous padding and margins for clean look
+
+INTERACTIVE ELEMENTS:
+- Smooth scroll navigation
+- Hover effects on buttons and cards
+- Image sliders for hero section (auto-rotate every 5 seconds)
+- Responsive hamburger menu for mobile
+- Search functionality in header
+- "Request for Information" and "Apply Now" call-to-action buttons in footer
+
+CONTENT TO INCLUDE:
+- Comilla University has 19 departments including: Mathematics, Physics, Statistics, Chemistry, Pharmacy, English, Bengali, Economics, Public Administration, Anthropology, Mass Communication & Journalism, Archaeology, Management Studies, AIS, Marketing, Finance and Banking, CSE, ICT, and Law
+- Located at Lalmai Bihar, Moynamoti, Kotbari, Cumilla on 50 acres
+- Vice Chancellor: Professor Dr. Md. Haider Ali
+
+FIRST STEP:
+Start by creating the basic project structure with React and Tailwind CSS. Set up the homepage with the navigation bar, hero section, and footer. Make sure the design matches the blue gradient theme and modern layout shown in the reference image.
+
+Reference the attached image (image.jpg) for exact visual styling, color schemes, spacing, typography, and component layouts.
